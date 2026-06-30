@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Identidade e Cultura - Centro de Dança Paula Sanchez</title>
+<meta name="description" content="Trabalho acadêmico de Identidade e Cultura sobre o Centro de Dança Paula Sanchez, etarismo e balé para mulheres maduras.">
+<link rel="shortcut icon" href="public/favicon-32x32.png" type="image/x-icon">
+<script>
+try{
+  const storedTheme=localStorage.getItem('paula-theme');
+  const prefersDark=window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if(storedTheme==='dark' || (!storedTheme && prefersDark)) {
+    document.documentElement.dataset.theme='dark';
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+}catch(e){}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+
+<style>
+:root{
+  --pink:#FFA5F3;
+  --pink-deep:#F285E0;
+  --pink-soft:#FFE9FB;
+  --pink-whisper:#FFF4FD;
+  --off-white:#FBF8F4;
+  --paper:#FFFFFF;
+  --ink:#2A2326;
+  --ink-soft:#5C5158;
+  --mauve:#A9939E;
+  --line:#ECDFE8;
+  --serif:'Cormorant Garamond', serif;
+  --sans:'Jost', sans-serif;
+  --maxw:1240px;
+}
+html[data-theme="dark"]{
+  --pink:#FFA5F3;
+  --pink-deep:#F59BE7;
+  --pink-soft:#3B2437;
+  --pink-whisper:#211821;
+  --off-white:#151015;
+  --paper:#201820;
+  --ink:#FBF4FA;
+  --ink-soft:#D9CBD5;
+  --mauve:#BBA7B5;
+  --line:#3A2C38;
+}
+
+*::selection {
+  color: #ffffff;
+  background-color: #f285e05d;
+  text-decoration: none;
+}
+
+/* Firefox */
+*::-moz-selection {
+  color: #ffffff;
+  background-color: #f285e06c;
+  text-decoration: none;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--off-white);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  transition:background .35s ease,color .35s ease;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 6vw;}
+@media(min-width:1300px){.wrap{padding:0 40px;}}
+
+h1,h2,h3,h4{
+  font-family:var(--serif);
+  font-weight:400;
+  letter-spacing:0.01em;
+  color:var(--ink);
+}
+.eyebrow{
+  font-family:var(--sans);
+  font-size:11px;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--pink-deep);
+  font-weight:500;
+  display:inline-block;
+  margin-bottom:18px;
+}
+.section{
+  padding:120px 0;
+  position:relative;
+}
+@media(max-width:768px){.section{padding:80px 0;}}
+.section-head{
+  max-width:680px;
+  margin:0 auto 64px;
+  text-align:center;
+}
+.section-head h2{font-size:clamp(32px,5vw,52px);font-style:italic;}
+.section-head p{color:var(--ink-soft);font-size:17px;margin-top:18px;}
+.divider{
+  width:1px;height:64px;background:linear-gradient(var(--pink),transparent);
+  margin:0 auto;
+}
+.divider-h{width:48px;height:1px;background:var(--pink);margin:24px auto;}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 38px;
+  border:1px solid var(--ink);
+  font-family:var(--sans);font-size:12px;letter-spacing:0.22em;text-transform:uppercase;
+  background:transparent;color:var(--ink);
+  transition:all .5s cubic-bezier(.2,.8,.2,1);
+  cursor:pointer;
+}
+.btn:hover{background:var(--ink);color:var(--off-white);}
+.btn.alt{border-color:var(--paper);color:var(--paper);}
+.btn.alt:hover{background:var(--paper);color:var(--ink);}
+.btn.solid{background:var(--pink);border-color:var(--pink);color:var(--ink);}
+.btn.solid:hover{background:var(--ink);border-color:var(--ink);color:var(--off-white);}
+
+/* RIBBON SIGNATURE ELEMENT */
+#ribbon-rail{
+  position:fixed;left:36px;top:0;height:100vh;width:60px;z-index:5;
+  pointer-events:none;
+}
+#ribbon-rail svg{height:100%;width:100%;}
+#ribbon-path{
+  fill:none;stroke:var(--pink);stroke-width:1.4;stroke-linecap:round;
+}
+@media(max-width:1100px){#ribbon-rail{display:none;}}
+
+/* NAV */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:26px 6vw;
+  display:flex;align-items:center;justify-content:space-between;gap:22px;
+  transition:background .5s ease, padding .5s ease, box-shadow .5s ease;
+  mix-blend-mode:normal;
+}
+header.scrolled{
+  background:rgba(251,248,244,0.92);
+  backdrop-filter:blur(10px);
+  padding:16px 6vw;
+  box-shadow:0 1px 0 var(--line);
+}
+html[data-theme="dark"] header.scrolled{background:rgba(21,16,21,0.92);}
+.logo{
+  font-family:var(--serif);font-style:italic;font-size:24px;letter-spacing:0.03em;
+  color:var(--ink);flex-shrink:0;
+}
+.navlinks{display:flex;gap:38px;list-style:none;align-items:center;margin-left:auto;}
+.navlinks a{
+  font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+  position:relative;padding-bottom:4px;
+}
+.navlinks a::after{
+  content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--pink-deep);
+  transition:width .4s ease;
+}
+.navlinks a:hover::after{width:100%;}
+.theme-toggle{
+  width:38px;height:38px;border:1px solid var(--line);border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.24);
+  color:var(--ink);cursor:pointer;transition:background .35s ease,border-color .35s ease,color .35s ease;
+  flex-shrink:0;
+}
+.theme-toggle:hover{background:var(--pink-soft);border-color:var(--pink);}
+.theme-toggle svg{width:17px;height:17px;stroke:currentColor;}
+.theme-toggle .moon{display:block;}
+.theme-toggle .sun{display:none;}
+html[data-theme="dark"] .theme-toggle .moon{display:none;}
+html[data-theme="dark"] .theme-toggle .sun{display:block;}
+.menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;}
+.menu-btn span{width:24px;height:1px;background:var(--ink);}
+@media(max-width:980px){
+  .navlinks{
+    position:absolute;top:74px;left:6vw;right:6vw;display:grid;gap:0;
+    background:rgba(251,248,244,0.96);border:1px solid var(--line);box-shadow:0 24px 48px -32px rgba(42,35,38,0.35);
+    opacity:0;visibility:hidden;transform:translateY(-8px);pointer-events:none;
+    transition:opacity .3s ease,transform .3s ease,visibility .3s ease;
+  }
+  html[data-theme="dark"] .navlinks{background:rgba(32,24,32,0.96);}
+  .navlinks.open{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;}
+  .navlinks li{border-bottom:1px solid var(--line);}
+  .navlinks li:last-child{border-bottom:0;}
+  .navlinks a{display:block;padding:16px 18px;}
+  .menu-btn{display:flex;}
+}
+
+/* HERO */
+.hero{
+  height:100vh;min-height:680px;position:relative;
+  display:flex;align-items:flex-end;
+  background:
+    radial-gradient(ellipse 80% 60% at 75% 18%, var(--pink-soft), transparent 60%),
+    linear-gradient(180deg,#ffbffa 0%, var(--off-white) 100%);
+  overflow:hidden;
+}
+.hero-art{position:absolute;inset:0;z-index:0;}
+.hero-art svg{position:absolute;}
+.hero-content{
+  position:relative;z-index:2;width:100%;padding:0 6vw 90px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,42vw);
+  gap:clamp(32px,6vw,84px);align-items:end;
+}
+.hero-content .eyebrow{color:var(--ink-soft);}
+.hero-copy{max-width:760px;}
+.hero h1{
+  font-size:clamp(42px,7.4vw,108px);
+  font-style:italic;
+  line-height:0.96;
+  max-width:14ch;
+  color:var(--ink);
+}
+.hero .sub{
+  margin-top:26px;font-size:18px;color:var(--ink-soft);max-width:38ch;font-weight:300;
+}
+.hero .responsaveis{
+  margin-top:20px;
+  max-width:72ch;
+  font-size:11px;
+  letter-spacing:0.12em;
+  line-height:1.8;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.hero .responsaveis strong{
+  color:var(--ink-soft);
+  font-weight:500;
+}
+.hero .cta-row{margin-top:46px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.hero-video{
+  width:100%;
+  height:auto;
+  justify-self:end;
+  aspect-ratio:16/9;
+  position:relative;
+  border:1px solid rgba(42,35,38,0.12);
+  border-radius:2px;
+  overflow:hidden;
+  box-shadow:0 30px 70px -45px rgba(242,133,224,0.62);
+  background:var(--pink-soft);
+}
+.hero-video::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(135deg, rgba(255,165,243,0.22), rgba(255,244,253,0.04) 42%, rgba(242,133,224,0.18)),
+    radial-gradient(ellipse at 80% 20%, rgba(255,165,243,0.2), transparent 48%);
+  mix-blend-mode:soft-light;
+}
+.hero-video video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+@media(max-width:980px){
+  .hero{height:auto;min-height:100vh;}
+  .hero-content{
+    grid-template-columns:1fr;
+    padding-top:140px;
+  }
+  .hero-video{
+    justify-self:start;
+    width:min(100%,520px);
+    aspect-ratio:16/10;
+  }
+  .scroll-cue{right:5vw;bottom:36px;}
+}
+@media(max-width:640px){
+  .hero{min-height:0;}
+  .hero-content{padding:118px 6vw 96px;gap:28px;}
+  .hero h1{font-size:clamp(40px,14vw,64px);line-height:0.98;}
+  .hero .responsaveis{font-size:10px;line-height:1.65;}
+  .hero .cta-row{gap:14px;margin-top:30px;}
+  .btn{width:100%;justify-content:center;padding:14px 20px;letter-spacing:0.14em;}
+  .scroll-cue{display:none;}
+  .section-head h2{font-size:clamp(30px,10vw,42px);line-height:1.08;}
+  .section-head{margin-bottom:44px;}
+  .eta-stat{display:block;}
+  .eta-stat p{text-align:left;margin-top:8px;}
+  .masonry{column-count:1;}
+  .espaco-grid{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .loc-info{padding:38px 28px;}
+  #lightbox .lb-inner{padding:34px 22px;}
+}
+.scroll-cue{
+  position:absolute;right:2.8vw;bottom:64px;z-index:5;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink);
+  padding:8px 7px 0;
+  text-shadow:0 1px 12px rgba(255,255,255,0.95);
+}
+.scroll-cue .line{width:1px;height:62px;background:rgba(42,35,38,0.42);overflow:hidden;position:relative;}
+.scroll-cue .line::after{
+  content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--pink-deep);
+  animation:scrollcue 2.2s ease-in-out infinite;
+}
+@keyframes scrollcue{0%{top:-100%;}50%{top:0;}100%{top:100%;}}
+
+/* HISTORIA timeline */
+.timeline{position:relative;max-width:880px;margin:0 auto;padding-left:2px;}
+.timeline::before{
+  content:'';position:absolute;left:18px;top:0;bottom:0;width:1px;background:var(--line);
+}
+.t-item{position:relative;padding:0 0 64px 60px;}
+.t-item:last-child{padding-bottom:0;}
+.t-item::before{
+  content:'';position:absolute;left:11px;top:6px;width:15px;height:15px;border-radius:50%;
+  background:var(--off-white);border:2px solid var(--pink);
+}
+.t-year{font-family:var(--serif);font-style:italic;font-size:29px;color:var(--pink-deep);margin-bottom:6px;}
+.t-item h4{font-size:21px;margin-bottom:8px;font-weight:500;}
+.t-item p{color:var(--ink-soft);font-size:15.5px;max-width:60ch;}
+
+/* TWO COL */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:48px;}}
+.split.reverse .split-visual{order:2;}
+@media(max-width:900px){.split.reverse .split-visual{order:0;}}
+
+.figure{
+  position:relative;aspect-ratio:4/5;border-radius:2px;overflow:hidden;
+  background:linear-gradient(155deg,var(--pink-soft) 0%, var(--paper) 55%, var(--pink) 140%);
+}
+.figure .frame-label{
+  position:absolute;bottom:18px;left:18px;background:rgba(255,255,255,0.85);
+  font-size:10px;letter-spacing:0.16em;text-transform:uppercase;padding:8px 14px;color:var(--ink-soft);
+}
+.figure svg{width:62%;position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);opacity:0.9;}
+
+/* PAULA cards */
+.cards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+@media(max-width:880px){.cards-row{grid-template-columns:1fr;}}
+.pcard{
+  background:var(--paper);padding:38px 32px;border:1px solid var(--line);
+  transition:transform .5s ease, box-shadow .5s ease;
+}
+.pcard:hover{transform:translateY(-6px);box-shadow:0 24px 50px -28px rgba(42,35,38,0.22);}
+.pcard .num{font-family:var(--serif);font-style:italic;color:var(--pink);font-size:34px;}
+.pcard h4{margin:14px 0 10px;font-size:19px;}
+.pcard p{color:var(--ink-soft);font-size:14.5px;}
+
+/* MISSAO */
+.missao-section{
+  background:#2A2326;color:#FBF8F4;text-align:center;
+  padding:150px 0;
+}
+.missao-section .eyebrow{color:var(--pink);}
+.missao-section blockquote{
+  font-family:var(--serif);font-style:italic;font-size:clamp(26px,4vw,44px);
+  max-width:880px;margin:0 auto;line-height:1.35;font-weight:400;
+}
+.missao-icons{
+  display:flex;justify-content:center;gap:54px;flex-wrap:wrap;margin-top:80px;
+}
+.micon{display:flex;flex-direction:column;align-items:center;gap:16px;max-width:130px;}
+.micon svg{width:38px;height:38px;stroke:var(--pink);}
+.micon span{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#cfc4cc;}
+
+/* ETARISMO */
+.etarismo{background:var(--pink-whisper);}
+.eta-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:70px;align-items:start;}
+@media(max-width:900px){.eta-grid{grid-template-columns:1fr;}}
+.eta-stat{
+  border-top:1px solid var(--ink);padding:26px 0;display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+}
+.eta-stat .big{font-family:var(--serif);font-style:italic;font-size:48px;color:var(--pink-deep);white-space:nowrap;}
+.eta-stat p{color:var(--ink-soft);font-size:14.5px;text-align:right;max-width:40ch;}
+.eta-text p{margin-bottom:20px;color:var(--ink-soft);font-size:16px;}
+.eta-text p strong{color:var(--ink);font-weight:500;}
+
+/* HISTORIAS REAIS */
+.swiper{padding:10px 4px 60px;}
+.tcard{
+  background:var(--paper);border:1px solid var(--line);padding:40px 34px;height:100%;
+  display:flex;flex-direction:column;
+}
+.t-avatar{
+  width:64px;height:64px;border-radius:50%;background:var(--pink-soft);
+  display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;
+  font-size:22px;color:var(--pink-deep);margin-bottom:22px;
+}
+.tcard .quote-mark{font-family:var(--serif);font-style:italic;font-size:54px;color:var(--pink);line-height:0.6;display:block;margin-bottom:6px;}
+.tcard p.body{color:var(--ink-soft);font-size:15.5px;flex:1;}
+.tcard .who{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);}
+.tcard .who h5{font-size:16px;font-weight:500;}
+.tcard .who span{font-size:12px;color:var(--mauve);letter-spacing:0.04em;}
+.swiper-pagination-bullet{background:var(--mauve);opacity:0.4;}
+.swiper-pagination-bullet-active{background:var(--pink-deep);opacity:1;}
+
+/* MODALIDADES */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:26px;}
+.mcard{
+  position:relative;background:var(--paper);border:1px solid var(--line);overflow:hidden;
+  transition:box-shadow .5s ease, transform .5s ease;
+}
+.mcard:hover{transform:translateY(-5px);box-shadow:0 24px 50px -30px rgba(42,35,38,0.25);}
+.mcard .mvisual{
+  aspect-ratio:16/11;background:linear-gradient(150deg,var(--pink-soft), var(--pink) 130%);
+  display:flex;align-items:center;justify-content:center;
+}
+.mcard .mvisual svg{width:34%;opacity:0.85;}
+.mcard .mbody{padding:24px 24px 28px;}
+.mcard h4{font-size:20px;margin-bottom:8px;}
+.mcard p{font-size:14px;color:var(--ink-soft);margin-bottom:14px;}
+.mcard .mmeta{display:flex;justify-content:space-between;font-size:11px;letter-spacing:0.06em;color:var(--mauve);text-transform:uppercase;border-top:1px solid var(--line);padding-top:14px;}
+
+/* GALERIA masonry */
+.masonry{column-count:4;column-gap:18px;}
+@media(max-width:1024px){.masonry{column-count:3;}}
+@media(max-width:680px){.masonry{column-count:2;}}
+.gitem{
+  break-inside:avoid;margin-bottom:18px;position:relative;cursor:pointer;overflow:hidden;
+}
+.gitem .gvisual{
+  width:100%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,var(--pink-soft), var(--paper) 60%, var(--pink) 150%);
+}
+.gitem .gvisual img{width:100%;height:100%;object-fit:cover;display:block;}
+.gitem svg{width:30%;opacity:0.8;transition:transform .6s ease;}
+.gitem:hover svg{transform:scale(1.08);}
+.gitem .gcap{
+  position:absolute;left:0;right:0;bottom:0;padding:14px 16px;
+  background:linear-gradient(0deg, rgba(42,35,38,0.55), transparent);
+  color:#fff;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  opacity:0;transition:opacity .4s ease;
+}
+.gitem:hover .gcap{opacity:1;}
+
+#lightbox{
+  position:fixed;inset:0;background:rgba(20,16,18,0.92);z-index:300;
+  display:none;align-items:center;justify-content:center;padding:6vw;
+}
+#lightbox.open{display:flex;}
+#lightbox .lb-inner{max-width:760px;width:100%;background:var(--off-white);padding:48px;text-align:center;}
+#lightbox .lb-visual{aspect-ratio:4/3;background:linear-gradient(150deg,var(--pink-soft),var(--pink));display:flex;align-items:center;justify-content:center;margin-bottom:24px;overflow:hidden;}
+#lightbox .lb-visual img{width:100%;height:100%;object-fit:cover;display:block;}
+#lightbox .lb-visual svg{width:28%;}
+#lightbox .lb-close{position:absolute;top:30px;right:5vw;color:#fff;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;}
+
+/* ESPACO */
+.espaco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);}
+@media(max-width:760px){.espaco-grid{grid-template-columns:1fr 1fr;}}
+.ecell{background:var(--paper);padding:46px 28px;text-align:center;}
+.ecell svg{width:34px;height:34px;stroke:var(--pink-deep);margin:0 auto 18px;}
+.ecell h5{font-size:16px;margin-bottom:8px;font-weight:500;}
+.ecell p{font-size:13px;color:var(--ink-soft);}
+
+/* PROJETO timeline horizontal */
+.htimeline{
+  display:flex;gap:0;overflow-x:auto;padding-bottom:30px;scroll-snap-type:x proximity;
+}
+.htimeline::-webkit-scrollbar{height:4px;}
+.htimeline::-webkit-scrollbar-thumb{background:var(--pink);}
+.h-step{
+  min-width:240px;scroll-snap-align:start;padding:0 32px 0 0;position:relative;flex-shrink:0;
+}
+.h-step::before{
+  content:'';position:absolute;top:9px;left:0;right:32px;height:1px;background:var(--line);
+}
+.h-step:first-child::before{left:0;}
+.h-step .dot{width:9px;height:9px;border-radius:50%;background:var(--pink-deep);margin-bottom:22px;position:relative;z-index:1;}
+.h-step .hnum{font-family:var(--serif);font-style:italic;color:var(--mauve);font-size:14px;}
+.h-step h5{font-size:16.5px;margin:6px 0 8px;font-weight:500;}
+.h-step p{font-size:13.5px;color:var(--ink-soft);}
+
+/* LOCALIZACAO */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);}
+@media(max-width:880px){.loc-grid{grid-template-columns:1fr;}}
+.loc-info{padding:60px;background:var(--paper);}
+.loc-info .row{margin-bottom:28px;}
+.loc-info .row h5{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--pink-deep);margin-bottom:8px;}
+.loc-info .row p{font-size:16px;}
+.loc-map{
+  background:var(--off-white);
+  min-height:420px;position:relative;overflow:hidden;
+}
+.loc-map iframe{width:100%;height:100%;min-height:420px;border:0;display:block;filter:saturate(.9);}
+html[data-theme="dark"] .loc-map iframe{filter:grayscale(.15) invert(.88) hue-rotate(180deg) saturate(.75) brightness(.85);}
+.map-link{
+  position:absolute;left:18px;bottom:18px;z-index:2;
+  background:rgba(251,248,244,0.94);border:1px solid var(--line);padding:10px 14px;
+  font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);
+}
+html[data-theme="dark"] .map-link{background:rgba(32,24,32,0.94);}
+
+/* CTA FINAL */
+.cta-final{
+  position:relative;background:#2A2326;color:#FBF8F4;text-align:center;
+  padding:170px 0;overflow:hidden;
+}
+.cta-final::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 30%, rgba(255,165,243,0.16), transparent 70%);
+}
+.cta-final h2{
+  position:relative;z-index:1;
+  font-size:clamp(30px,5.4vw,58px);font-style:italic;max-width:18ch;margin:0 auto 40px;line-height:1.3;
+}
+.cta-final p{
+  position:relative;
+  z-index:1;
+  max-width:620px;
+  margin:0 auto 38px;
+  color:#d8ccd4;
+  font-size:16px;
+}
+.cta-final .btn{position:relative;z-index:1;}
+
+/* FOOTER */
+footer{background:var(--off-white);border-top:1px solid var(--line);padding:80px 0 34px;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;margin-bottom:64px;}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr 1fr;}}
+.foot-grid h5{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mauve);margin-bottom:18px;}
+.foot-grid ul{list-style:none;}
+.foot-grid li{margin-bottom:10px;font-size:14.5px;color:var(--ink-soft);}
+.foot-logo{font-family:var(--serif);font-style:italic;font-size:26px;margin-bottom:14px;}
+.foot-bottom{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+  padding-top:28px;border-top:1px solid var(--line);font-size:12px;color:var(--mauve);
+}
+.social{display:flex;gap:16px;}
+
+[data-aos]{transition-timing-function:cubic-bezier(.2,.8,.2,1) !important;}
+</style>
+</head>
+<body>
+
+<div id="ribbon-rail">
+  <svg viewBox="0 0 60 2000" preserveAspectRatio="none">
+    <path id="ribbon-path" d="M30,0 C5,120 55,260 30,400 C5,540 55,680 30,820 C5,960 55,1100 30,1240 C5,1380 55,1520 30,1660 C5,1800 55,1900 30,2000" />
+  </svg>
+</div>
+
+<header id="siteHeader">
+  <a href="#" class="logo">Identidade e Cultura</a>
+  <ul class="navlinks">
+    <li><a href="#historia">História</a></li>
+    <li><a href="#etarismo">Etarismo</a></li>
+    <li><a href="#modalidades">Modalidades</a></li>
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#localizacao">Visite</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema escuro" aria-pressed="false">
+    <svg class="moon" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M21 14.5A8.5 8.5 0 019.5 3 7 7 0 1018 17.5c1.1-.6 2.1-1.6 3-3z"/></svg>
+    <svg class="sun" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+  </button>
+  <button class="menu-btn" aria-label="menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-art">
+    <svg width="520" height="700" style="right:-60px;top:-40px;opacity:0.5" viewBox="0 0 520 700" fill="none">
+      <path d="M260 40 C150 120 120 260 200 340 C260 400 260 480 180 540 C120 585 130 640 200 660" stroke="#FF63EA" stroke-width="1" opacity="0.6"/>
+      <circle cx="260" cy="40" r="3" fill="#F285E0"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-copy">
+      <span class="eyebrow" data-aos="fade-up">Centro de Dança Paula Sanchez</span>
+      <h1 data-aos="fade-up" data-aos-delay="100" style="margin-bottom:50px;">Nunca é tarde<br>para descobrir<br>a dança.</h1>
+      <p class="responsaveis" data-aos="fade-up" data-aos-delay="260"><strong>Trabalho por</strong> Alice Pinheiro de Paula, Bruna Livia Costa, Catarina Melchior Gomes, Daniela Varnier Sales, Emily Siqueira, Gustavo Junqueira Zanini, Luiza Pereira Gonçalves, Manuela Hoffmann Rohde e Victoria Dittrich.</p>
+      <div class="cta-row" data-aos="fade-up" data-aos-delay="320">
+        <a href="#historia" class="btn">Conheça nossa pesquisa</a>
+        <a href="public/trabalho-identidade-e-cultura.pdf" download class="btn" style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;border-bottom:1px solid var(--ink);">Baixar documento da pesquisa →</a>
+      </div>
+    </div>
+    <div class="hero-video" data-aos="fade-left" data-aos-delay="180" aria-hidden="true">
+      <video src="public/10637340-uhd_4096_2160_25fps.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Role</span><div class="line"></div></div>
+</section>
+
+<!-- HISTORIA -->
+<section class="section" id="historia">
+  <div class="wrap">
+    <div class="section-head" data-aos="fade-up">
+      <span class="eyebrow">Percurso do trabalho</span>
+      <h2 style="line-height: 46px;">Como o Centro virou objeto de pesquisa</h2>
+      <p>O trabalho acompanha a escolha do Centro de Dança Paula Sanchez como campo de análise para discutir identidade, cultura e etarismo no balé para mulheres maduras.</p>
+    </div>
+    <div class="timeline">
+      <div class="t-item" data-aos="fade-up">
+        <div class="t-year">Ideia inicial</div>
+        <h4>Outras possibilidades de campo</h4>
+        <p>Antes do Centro, o grupo considerou trabalhar com uma companhia circense e com uma exposição sobre Racionais no Museu das Favelas, mas as propostas não avançaram por agenda e conflito com outro grupo.</p>
+      </div>
+      <div class="t-item" data-aos="fade-up">
+        <div class="t-year">Escolha</div>
+        <h4>Balé, identidade e etarismo</h4>
+        <p>A escolha do Centro veio do interesse em observar como a dança pode funcionar como expressão, empoderamento e resistência a padrões que limitam mulheres adultas.</p>
+      </div>
+      <div class="t-item" data-aos="fade-up">
+        <div class="t-year">08/07/2025</div>
+        <h4>Primeira visita ao espaço</h4>
+        <p>Parte do grupo visitou o Centro, realizou entrevistas, produziu registros e observou a relação entre direção, funcionários, alunas e o ambiente de aula.</p>
+      </div>
+      <div class="t-item" data-aos="fade-up">
+        <div class="t-year">15/07/2025</div>
+        <h4>Segunda visita e complementação</h4>
+        <p>Um segundo grupo compareceu para complementar entrevistas, esclarecer dúvidas e registrar mais detalhes do cotidiano do Centro.</p>
+      </div>
+      <div class="t-item" data-aos="fade-up">
+        <div class="t-year">Síntese</div>
+        <h4>Arte como pertencimento</h4>
+        <p>A pesquisa conclui que a dança, em ambientes inclusivos, fortalece autoestima, liberdade, expressão corporal e participação cultural em qualquer idade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAULA SANCHEZ -->
+<section class="section" style="background:var(--paper);">
+  <div class="wrap">
+    <div class="split">
+      <div class="figure" data-aos="fade-right">
+        <img style="object-fit: cover; height: 100%;" src="https://www.varalstudio.com.br/ballo/images/prof_paula_s_2.jpg" alt="">
+        <span class="frame-label">Foto · Paula Sanchez</span>
+      </div>
+      <div data-aos="fade-left">
+        <span class="eyebrow">Sobre o Centro</span>
+        <h2 style="font-size:clamp(28px,4vw,44px);font-style:italic;margin-bottom:20px;">Um espaço observado pelo grupo</h2>
+        <p style="color:var(--ink-soft);margin-bottom:30px;">No PDF, o Centro de Dança Paula Sanchez aparece como uma instituição voltada à inclusão de diferentes corpos na dança, com foco no balé para mulheres adultas e na superação de barreiras ligadas à idade.</p>
+        <div class="cards-row" style="grid-template-columns:1fr 1fr;gap:18px;">
+          <div class="pcard" style="padding:24px 22px;">
+            <div class="num">01</div>
+            <h4 style="font-size:16px;">Missão</h4>
+            <p style="font-size:13px;">Inspirar pessoas a viverem a dança em plenitude, com acolhimento, desenvolvimento humano e expressão.</p>
+          </div>
+          <div class="pcard" style="padding:24px 22px;">
+            <div class="num">02</div>
+            <h4 style="font-size:16px;">Entrevistas</h4>
+            <p style="font-size:13px;">O grupo conversou com Paula Sanchez, Phillipe, professoras, funcionárias e alunas presentes.</p>
+          </div>
+          <div class="pcard" style="padding:24px 22px;">
+            <div class="num">03</div>
+            <h4 style="font-size:16px;">Ambiente</h4>
+            <p style="font-size:13px;">As observações destacam carisma, organização, acolhimento e vínculos entre quem frequenta o local.</p>
+          </div>
+          <div class="pcard" style="padding:24px 22px;">
+            <div class="num">04</div>
+            <h4 style="font-size:16px;">Tema central</h4>
+            <p style="font-size:13px;">O Centro serve como exemplo para discutir como o balé pode romper padrões etaristas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSAO -->
+<section class="missao-section">
+  <div class="wrap">
+    <span class="eyebrow" data-aos="fade-up">Missão</span>
+    <blockquote data-aos="fade-up" data-aos-delay="120">
+      "Inspirar pessoas a viverem a dança em sua plenitude, utilizando a dança como instrumento de desenvolvimento humano, acolhimento, bem-estar e transformação."
+    </blockquote>
+    <div class="missao-icons">
+      <div class="micon" data-aos="fade-up" data-aos-delay="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M12 21s-7-4.5-9.5-9C1 8 3 4 7 4c2 0 4 1.5 5 3.5C13 5.5 15 4 17 4c4 0 6 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+        <span>Acolhimento</span>
+      </div>
+      <div class="micon" data-aos="fade-up" data-aos-delay="80">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+        <span>Autoestima</span>
+      </div>
+      <div class="micon" data-aos="fade-up" data-aos-delay="160">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M12 2v20M5 7c2 2 5 2 7 0s5-2 7 0M5 17c2-2 5-2 7 0s5 2 7 0"/></svg>
+        <span>Liberdade</span>
+      </div>
+      <div class="micon" data-aos="fade-up" data-aos-delay="240">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M12 3c-4 3-7 6-7 10a7 7 0 0014 0c0-4-3-7-7-10z"/></svg>
+        <span>Expressão corporal</span>
+      </div>
+      <div class="micon" data-aos="fade-up" data-aos-delay="320">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M4 12a8 8 0 1116 0 8 8 0 01-16 0z"/><path d="M12 8v4l3 2"/></svg>
+        <span>Desenvolvimento</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ETARISMO -->
+<section class="section etarismo" id="etarismo">
+  <div class="wrap">
+    <div class="section-head" data-aos="fade-up">
+      <span class="eyebrow">Um propósito além da dança</span>
+      <h2>Etarismo: o preconceito que tira mulheres de cena</h2>
+    </div>
+    <div class="eta-grid">
+      <div class="eta-text" data-aos="fade-right">
+        <p><strong>Etarismo</strong> é o preconceito ou a discriminação baseada na idade — e no universo da dança, ele aparece cedo: a ideia de que ballet é "coisa de criança" ou que existe uma idade limite para começar.</p>
+        <p>Essa crença afasta milhares de mulheres adultas de uma arte que poderiam viver plenamente, gerando insegurança, vergonha do próprio corpo e a sensação de "ter perdido o momento certo".</p>
+        <p>No trabalho, o Centro de Dança Paula Sanchez é analisado como um espaço que ajuda a romper esse ciclo ao valorizar diferentes corpos, histórias e trajetórias dentro da dança.</p>
+        <p>Inclusão, neste contexto, significa compreender a dança como formação cultural, pertencimento, bem-estar e expressão — não como prática reservada apenas à juventude.</p>
+      </div>
+      <div data-aos="fade-left">
+        <div class="eta-stat"><span class="big">OMS</span><p>o etarismo é tratado como discriminação que afeta saúde, bem-estar e integração social.</p></div>
+        <div class="eta-stat"><span class="big">Balé</span><p>o trabalho aponta a dança clássica como campo historicamente associado à juventude e à perfeição corporal.</p></div>
+        <div class="eta-stat"><span class="big">Arte</span><p>a pesquisa defende que a expressão artística não tem idade e pode fortalecer identidade cultural.</p></div>
+        <div class="eta-stat" style="border-bottom:1px solid var(--ink);"><span class="big">Corpo</span><p>a barreira analisada é social e cultural, não simplesmente física.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIAS REAIS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head" data-aos="fade-up">
+      <span class="eyebrow">Vivências da visita</span>
+      <h2>O que o grupo observou no Centro</h2>
+      <p>Impressões registradas no trabalho a partir das visitas, entrevistas e relatos coletados durante a pesquisa de campo.</p>
+    </div>
+    <div class="swiper" data-aos="fade-up">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="tcard">
+            <span class="quote-mark">"</span>
+            <div class="t-avatar">A.</div>
+            <p class="body">A entrevista com Paula Sanchez e Phillipe evidenciou disciplina, inclusão e acolhimento. O ambiente foi descrito como calmo, organizado e marcado por tons leves.</p>
+            <div class="who"><h5>Alice</h5><span>Entrevista com a direção</span></div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="tcard">
+            <span class="quote-mark">"</span>
+            <div class="t-avatar">B.</div>
+            <p class="body">O relato de uma aluna que começou no balé depois de acompanhar a filha mostrou como a relação com a arte pode nascer em caminhos inesperados e afetivos.</p>
+            <div class="who"><h5>Bruna</h5><span>Relato sobre Carol e sua filha</span></div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="tcard">
+            <span class="quote-mark">"</span>
+            <div class="t-avatar">D.</div>
+            <p class="body">As alunas e funcionárias demonstraram vínculo forte com o espaço, conversando sobre o cotidiano e tratando o grupo com atenção durante as entrevistas.</p>
+            <div class="who"><h5>Daniela</h5><span>Observação do ambiente</span></div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="tcard">
+            <span class="quote-mark">"</span>
+            <div class="t-avatar">V.</div>
+            <p class="body">A visita provocou reflexão sobre padrões ligados à idade e mostrou o corpo como instrumento de beleza, força e poesia em diferentes fases da vida.</p>
+            <div class="who"><h5>Victoria</h5><span>Reflexão sobre etarismo</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODALIDADES -->
+<section class="section" style="background:var(--paper);" id="modalidades">
+  <div class="wrap">
+    <div class="section-head" data-aos="fade-up">
+      <span class="eyebrow">Modalidades</span>
+      <h2>Uma grade pensada para cada corpo e cada objetivo</h2>
+    </div>
+    <div class="mod-grid" id="modGrid"></div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="section" id="galeria">
+  <div class="wrap">
+    <div class="section-head" data-aos="fade-up">
+      <span class="eyebrow">Galeria</span>
+      <h2>Bastidores, aulas e apresentações</h2>
+    </div>
+    <div class="masonry" id="galleryGrid"></div>
+  </div>
+</section>
+
+<div id="lightbox">
+  <span class="lb-close" id="lbClose">Fechar ✕</span>
+  <div class="lb-inner">
+    <div class="lb-visual" id="lbVisual"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><path d="M12 21s-7-4.5-9.5-9C1 8 3 4 7 4c2 0 4 1.5 5 3.5C13 5.5 15 4 17 4c4 0 6 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div>
+    <h4 id="lbTitle" style="font-style:italic;font-size:24px;"></h4>
+  </div>
+</div>
+
+<!-- ESPACO -->
+<section class="section" style="background:var(--pink-whisper);">
+  <div class="wrap">
+    <div class="section-head" data-aos="fade-up">
+      <span class="eyebrow">Sobre o local</span>
+      <h2>O espaço observado durante a visita</h2>
+    </div>
+    <div class="espaco-grid" data-aos="fade-up">
+      <div class="ecell"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M3 10l9-7 9 7v9a2 2 0 01-2 2h-4v-6H9v6H5a2 2 0 01-2-2v-9z"/></svg><h5>Recepção</h5><p>Poltronas confortáveis e ambiente organizado logo na chegada.</p></div>
+      <div class="ecell"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg><h5>Salas de aula</h5><p>Uma sala principal ampla e outra menor para turmas reduzidas.</p></div>
+      <div class="ecell"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><h5>Camarim</h5><p>Espaço para troca de roupa com privacidade antes ou depois das aulas.</p></div>
+      <div class="ecell"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M3 10h13v6a3 3 0 01-3 3H6a3 3 0 01-3-3v-6z"/><path d="M16 11h2a2 2 0 010 4h-2"/></svg><h5>Cozinha e cafeteria</h5><p>Área pequena de apoio, citada no trabalho como parte do cotidiano do local.</p></div>
+      <div class="ecell"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M4 4h16v16H4z"/><path d="M9 9l3 3 3-3"/></svg><h5>Certificados</h5><p>Paredes com registros da trajetória profissional da equipe.</p></div>
+      <div class="ecell"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg><h5>Acessibilidade</h5><p>A entrada possui escada estreita, ponto observado como desafio de acesso.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETO ACADEMICO -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head" data-aos="fade-up">
+      <span class="eyebrow">Sobre a pesquisa</span>
+      <h2>Como o trabalho de campo foi realizado</h2>
+      <p>O grupo organizou duas idas ao Centro para entrevistar pessoas, registrar imagens, vídeos e áudios, e analisar o espaço a partir de identidade, cultura e etarismo.</p>
+    </div>
+    <div class="htimeline" data-aos="fade-up">
+      <div class="h-step"><div class="dot"></div><div class="hnum">Etapa 1</div><h5>Definição do tema</h5><p>Escolha do balé para mulheres adultas como recorte para discutir etarismo.</p></div>
+      <div class="h-step"><div class="dot"></div><div class="hnum">Etapa 2</div><h5>Visita de 08/07</h5><p>Primeira ida ao Centro, com entrevistas e reconhecimento do espaço.</p></div>
+      <div class="h-step"><div class="dot"></div><div class="hnum">Etapa 3</div><h5>Visita de 15/07</h5><p>Segunda ida para complementar a coleta e registrar novas imagens.</p></div>
+      <div class="h-step"><div class="dot"></div><div class="hnum">Etapa 4</div><h5>Registros</h5><p>Uso de fotografias, vídeos, áudios e anotações como suporte da análise.</p></div>
+      <div class="h-step"><div class="dot"></div><div class="hnum">Etapa 5</div><h5>Observações</h5><p>Leitura dos comportamentos, vínculos e práticas à luz do conceito de etarismo.</p></div>
+      <div class="h-step" style="min-width:260px;"><div class="dot"></div><div class="hnum">Etapa 6</div><h5>Conclusão</h5><p>Síntese da dança como inclusão, empoderamento e resistência cultural.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCALIZACAO -->
+<section class="section" id="localizacao" style="background:var(--paper);">
+  <div class="wrap">
+    <div class="section-head" data-aos="fade-up">
+      <span class="eyebrow">Dados do PDF</span>
+      <h2>Informações registradas sobre o Centro</h2>
+    </div>
+    <div class="loc-grid" data-aos="fade-up">
+      <div class="loc-info">
+        <div class="row"><h5>Endereço</h5><p>Alameda São Caetano, 1949 — Santa Maria<br>São Caetano do Sul, SP</p></div>
+        <div class="row"><h5>Telefone</h5><p>(11) 99537-9392</p></div>
+        <div class="row"><h5>Horários</h5><p>Segunda a quinta · 09h às 22h<br>Sexta · 16h às 20h<br>Sábado · 09h às 14h30</p></div>
+        <div class="row"><h5>Bairro</h5><p>Santa Maria, região citada no trabalho por sua história urbana em São Caetano do Sul.</p></div>
+      </div>
+      <div class="loc-map">
+        <iframe
+          title="Mapa do Centro de Dança Paula Sanchez"
+          src="https://www.google.com/maps?q=Alameda%20S%C3%A3o%20Caetano%2C%201949%20-%20Santa%20Maria%2C%20S%C3%A3o%20Caetano%20do%20Sul%20-%20SP%2C%2009560-050&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Alameda%20S%C3%A3o%20Caetano%2C%201949%20-%20Santa%20Maria%2C%20S%C3%A3o%20Caetano%20do%20Sul%20-%20SP%2C%2009560-050" target="_blank" rel="noopener">Abrir no Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="cta-final">
+  <div class="wrap">
+    <span class="eyebrow" data-aos="fade-up">Trabalho acadêmico</span>
+    <h2 data-aos="fade-up" data-aos-delay="100" style="color: #ECDFE8;">Um olhar sobre liberdade, acolhimento e etarismo no balé.</h2>
+    <p data-aos="fade-up" data-aos-delay="160">Este site apresenta a pesquisa de Identidade e Cultura sobre o Centro de Dança Paula Sanchez como espaço de resistência, expressão corporal e pertencimento para mulheres maduras.</p>
+    <a href="public/trabalho-identidade-e-cultura.pdf" download class="btn solid" data-aos="fade-up" data-aos-delay="220">Baixar trabalho completo</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">Identidade e Cultura</div>
+        <p style="font-size:14px;color:var(--ink-soft);max-width:32ch;">Site de apresentação do trabalho acadêmico sobre liberdade, acolhimento e etarismo no Centro de Dança Paula Sanchez.</p>
+      </div>
+      <div>
+        <h5>Navegação</h5>
+        <ul><li><a href="#historia">História</a></li><li><a href="#etarismo">Etarismo</a></li><li><a href="#modalidades">Modalidades</a></li><li><a href="#galeria">Galeria</a></li></ul>
+      </div>
+      <div>
+        <h5>Dados do Centro</h5>
+        <ul><li>(11) 99537-9392</li><li>Alameda São Caetano, 1949</li><li>Santa Maria — São Caetano do Sul</li></ul>
+      </div>
+      <div>
+        <h5>Trabalho</h5>
+        <ul><li>Universidade Federal do ABC</li><li>Identidade e Cultura</li><li>São Bernardo do Campo · 2025</li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Material acadêmico sobre o Centro de Dança Paula Sanchez.</span>
+      <div class="social"><a href="public/trabalho-identidade-e-cultura.pdf" download>Baixar PDF</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+<script>
+AOS.init({duration:900,once:true,easing:'ease-out-cubic'});
+gsap.registerPlugin(ScrollTrigger);
+
+// header background on scroll
+const header=document.getElementById('siteHeader');
+ScrollTrigger.create({start:80,end:99999,onUpdate:self=>{header.classList.toggle('scrolled',self.scroll()>80);}});
+
+// theme toggle
+const themeToggle=document.getElementById('themeToggle');
+function syncThemeButton(){
+  const isDark=document.documentElement.dataset.theme==='dark';
+  themeToggle.setAttribute('aria-pressed',String(isDark));
+  themeToggle.setAttribute('aria-label',isDark?'Alternar para tema claro':'Alternar para tema escuro');
+}
+themeToggle.addEventListener('click',()=>{
+  const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  if(next==='dark') document.documentElement.dataset.theme='dark';
+  else delete document.documentElement.dataset.theme;
+  localStorage.setItem('paula-theme',next);
+  syncThemeButton();
+});
+syncThemeButton();
+
+// mobile navigation
+const menuBtn=document.querySelector('.menu-btn');
+const navlinks=document.querySelector('.navlinks');
+menuBtn.addEventListener('click',()=>{
+  const open=navlinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded',String(open));
+});
+navlinks.querySelectorAll('a').forEach(link=>{
+  link.addEventListener('click',()=>{
+    navlinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded','false');
+  });
+});
+
+// ribbon draw on scroll
+const path=document.getElementById('ribbon-path');
+const len=path.getTotalLength();
+path.style.strokeDasharray=len;
+path.style.strokeDashoffset=len;
+gsap.to(path,{strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:0.4}});
+
+// parallax hero art
+gsap.to('.hero-art',{yPercent:18,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+// Swiper testimonials
+new Swiper('.swiper',{
+  slidesPerView:1.05,spaceBetween:24,
+  breakpoints:{700:{slidesPerView:2,spaceBetween:28},1100:{slidesPerView:3,spaceBetween:30}},
+  pagination:{el:'.swiper-pagination',clickable:true},
+});
+
+// modalidades data + render
+const modalidades=[
+ {n:'Alongamento e Mat Pilates',d:'Modalidades citadas no trabalho como parte da grade oferecida pelo Centro.',dur:'50 a 60 min',p:'Plano mensal ou anual'},
+ {n:'Ballet Clássico',d:'Inclui turmas de formação e adulto, ponto central da análise sobre etarismo.',dur:'60 a 105 min',p:'Formação e adulto'},
+ {n:'Dança Contemporânea',d:'Integra a diversidade de práticas corporais observadas na instituição.',dur:'50 a 90 min',p:'Modalidade do Centro'},
+ {n:'Danças de Salão',d:'Uma das modalidades listadas no levantamento sobre o funcionamento do espaço.',dur:'50 a 90 min',p:'Modalidade do Centro'},
+ {n:'Danças Urbanas',d:'Aparece na grade como expansão das experiências de movimento oferecidas.',dur:'50 a 90 min',p:'Modalidade do Centro'},
+ {n:'Dança do Ventre',d:'Parte das opções de dança apresentadas no trabalho acadêmico.',dur:'50 a 90 min',p:'Modalidade do Centro'},
+ {n:'Jazz Dance',d:'Modalidade com turmas de formação e adulto, conforme registrado no PDF.',dur:'60 a 105 min',p:'Formação e adulto'},
+ {n:'Sapateado Americano',d:'Também compõe a lista de práticas oferecidas pelo Centro.',dur:'50 a 90 min',p:'Modalidade do Centro'},
+ {n:'Aulas particulares',d:'O trabalho registra opções de aulas particulares além das turmas regulares.',dur:'Variável',p:'Conforme curso'},
+ {n:'Planos de aula',d:'Os valores variam por curso, turma, frequência e duração das aulas.',dur:'Mensal/anual',p:'Dinheiro, cartão ou Pix'},
+];
+const icon='<svg viewBox="0 0 24 24" fill="none" stroke="#2A2326" stroke-width="1.1"><path d="M12 21s-7-4.5-9.5-9C1 8 3 4 7 4c2 0 4 1.5 5 3.5C13 5.5 15 4 17 4c4 0 6 4 4.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>';
+document.getElementById('modGrid').innerHTML = modalidades.map(m=>`
+  <div class="mcard" data-aos="fade-up">
+    <div class="mvisual">${icon}</div>
+    <div class="mbody">
+      <h4>${m.n}</h4>
+      <p>${m.d}</p>
+      <div class="mmeta"><span>${m.dur}</span><span>${m.p}</span></div>
+    </div>
+  </div>`).join('');
+
+// gallery data + render + lightbox
+const galeria=[
+  {t:'Sapatos de cada modalidade',h:260,src:'public/sapatos-modalidade.png'},
+  {t:'Troféus que a escola ganhou',h:260,src:'public/trofeus-da-escola.png'},
+  {t:'Sala de figurinos',h:220,src:'public/sala-figurino.png'},
+  {t:'Sala de aula principal',h:300,src:'public/sala-principal.png'},
+  {t:'Fachada do centro',h:240,src:'public/fachada.png'},
+  {t:'Grupo reunido com os fundadores e recepcionista',h:280,src:'public/grupo-reunido.png'},
+  {t:'Ensaio de Contemporâneo',h:537,src:'public/sala-principal.png'},
+];
+document.getElementById('galleryGrid').innerHTML = galeria.map(g=>`
+  <div class="gitem" data-aos="fade-up" data-title="${g.t}" data-src="${g.src}">
+    <div class="gvisual" style="height:${g.h}px">
+      <img src="${g.src}" alt="${g.t}" loading="lazy">
+    </div>
+    <div class="gcap">${g.t}</div>
+  </div>`).join('');
+
+const lb=document.getElementById('lightbox');
+const lbVisual=document.getElementById('lbVisual');
+document.getElementById('galleryGrid').addEventListener('click',e=>{
+  const item=e.target.closest('.gitem'); if(!item) return;
+  document.getElementById('lbTitle').textContent=item.dataset.title;
+  lbVisual.innerHTML=`<img src="${item.dataset.src}" alt="${item.dataset.title}">`;
+  lb.classList.add('open');
+});
+document.getElementById('lbClose').addEventListener('click',()=>lb.classList.remove('open'));
+lb.addEventListener('click',e=>{ if(e.target===lb) lb.classList.remove('open'); });
+
+// section fade-up generic for elements w/o explicit aos
+document.querySelectorAll('.section-head, .timeline, .eta-grid, .mod-grid').forEach(el=>{
+  if(!el.hasAttribute('data-aos')) el.setAttribute('data-aos','fade-up');
+});
+</script>
+</body>
+</html>
